@@ -29,8 +29,6 @@ int		get_next_line(int fd, char **line)
 		temp[readv] = '\0';
 		memory[fd] = ft_stradd(memory[fd], temp);
 	}
-	if (readv == 0)
-		memory[fd] = ft_stradd(memory[fd], temp);
 	free(temp);
 	res = ft_strrchr(memory[fd], '\n');
 	*line = ft_cpyto(memory[fd], '\n');

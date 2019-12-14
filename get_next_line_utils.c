@@ -14,6 +14,8 @@
 
 int		ft_strrchr(char *str, char c)
 {
+	if (*str == c)
+		return(1);
 	while (*str++)
 		if (*str == c)
 			return (1);
