@@ -6,7 +6,7 @@
 /*   By: bmarecha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 15:20:46 by bmarecha          #+#    #+#             */
-/*   Updated: 2019/12/13 16:54:54 by bmarecha         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:47:55 by bmarecha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_strrchr(char *str, char c)
 {
 	if (*str == c)
-		return(1);
+		return (1);
 	while (*str++)
 		if (*str == c)
 			return (1);

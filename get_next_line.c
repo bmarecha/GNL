@@ -6,11 +6,20 @@
 /*   By: bmarecha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 13:51:20 by bmarecha          #+#    #+#             */
-/*   Updated: 2019/12/13 16:57:03 by bmarecha         ###   ########.fr       */
+/*   Updated: 2019/12/16 13:35:17 by bmarecha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	is_end_of_file(char **memfd, int gnl_value)
+{
+	if (!gnl_value)
+	{
+		free(*memfd);
+		*memfd = 0;
+	}
+}
 
 int		get_next_line(int fd, char **line)
 {
@@ -20,7 +29,8 @@ int		get_next_line(int fd, char **line)
 	int				readv;
 
 	if (!line || BUFFER_SIZE <= 0 || fd == -1 ||
-			(!(memory[fd]) && !(memory[fd] = malloc(1))) ||
+			(!(memory[fd]) && ((!(memory[fd] = malloc(1)))
+			|| (*memory[fd] = 0))) ||
 			!(temp = malloc(BUFFER_SIZE + 1)))
 		return (-1);
 	while (!ft_strrchr(memory[fd], '\n')
@@ -35,5 +45,6 @@ int		get_next_line(int fd, char **line)
 	memory[fd] = ft_resetto(memory[fd], '\n');
 	if (readv == -1)
 		return (-1);
+	is_end_of_file(&memory[fd], res);
 	return (res);
 }
