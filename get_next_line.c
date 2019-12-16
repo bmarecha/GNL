@@ -6,7 +6,7 @@
 /*   By: bmarecha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 13:51:20 by bmarecha          #+#    #+#             */
-/*   Updated: 2019/12/16 13:35:17 by bmarecha         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:22:14 by bmarecha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		get_next_line(int fd, char **line)
 	int				res;
 	int				readv;
 
-	if (!line || BUFFER_SIZE <= 0 || fd == -1 ||
+	if (!line || BUFFER_SIZE <= 0 || fd < 0 ||
 			(!(memory[fd]) && ((!(memory[fd] = malloc(1)))
 			|| (*memory[fd] = 0))) ||
 			!(temp = malloc(BUFFER_SIZE + 1)))

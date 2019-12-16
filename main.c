@@ -5,15 +5,19 @@
 #include <fcntl.h>
 
 int	main(int argc, char **argv)
-{
-	if (argc == 1)
-		return 0;
-	
+{	
 	int res;
 	char **line = malloc(1);
-	int *fd = malloc(4 * (argc - 1));
+	int *fd = malloc(1 * (argc - 1));
 	int i = 0;
 
+	if (argc == 1)
+	{
+		free(fd);
+		fd = malloc(1);
+		i+= 1;
+		fd[0] = 0;
+	}
 	while (++i < argc)
 		fd[i - 1] = open(argv[i], O_RDONLY);
 	while (--i)
